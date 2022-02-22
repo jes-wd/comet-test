@@ -35,10 +35,11 @@ class EfficiencyScore {
 
     public static function get_efficiency_score() {
         $road_cpms = self::get_user_input_for_road_cpms();
-        $efficiency_score = 0;
 
         // get efficiency score for each control method
         foreach (self::$control_methods as $control_method_to_test => $values) {
+            $efficiency_score = 0;
+            
             foreach ($road_cpms as $road_cpm) {
                 $throughput_type = self::get_throughput_type_for_road_cpm($road_cpm);
                 $efficiency_score += self::$control_methods[$control_method_to_test][$throughput_type];
